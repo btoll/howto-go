@@ -1,0 +1,70 @@
+package __maze
+
+import (
+	"math/rand"
+	"time"
+)
+
+// N, S, E, W = 1, 2, 4, 8
+const (
+	N = 1 << iota
+	S
+	E
+	W
+)
+
+type DX map[int8]int8
+type DY map[int8]int8
+type OPPOSITE map[int8]int8
+
+var dx = DX{
+	E: 1,
+	W: -1,
+	N: 0,
+	S: 0,
+}
+var dy = DY{
+	E: 0,
+	W: 0,
+	N: -1,
+	S: 1,
+}
+var opposite = OPPOSITE{
+	E: W,
+	W: E,
+	N: S,
+	S: N,
+}
+
+func __initMaze(cx, cy int8, grid [][]int8) {
+	rand.Seed(time.Now().UnixNano())
+	directions := []int8{N, S, E, W}
+
+	rand.Shuffle(len(directions), func(i, j int) {
+		directions[i], directions[j] = directions[j], directions[i]
+	})
+	var colLength int8 = int8(len(grid) - 1)
+	var rowLength int8 = int8(len(grid[0]) - 1)
+
+	for _, dir := range directions {
+		nx, ny := cx+dx[dir], cy+dy[dir]
+		if nx >= 0 && nx <= colLength &&
+			ny >= 0 && ny <= rowLength &&
+			grid[ny][nx] == 0 {
+			grid[cy][cx] |= dir
+			grid[ny][nx] |= opposite[dir]
+			initMaze(nx, ny, grid)
+		}
+	}
+}
+
+func __Create() [][]int8 {
+	//	grid := Array.new(height) { Array.new(width, 0) }
+	//	grid := [][]int{}
+	grid := make([][]int8, 10)
+	for i := range grid {
+		grid[i] = make([]int8, 10)
+	}
+	initMaze(0, 0, grid)
+	return grid
+}

@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/btoll/howto-go/tree"
+	"github.com/btoll/howto-go/maze"
 )
 
 func main() {
@@ -65,10 +63,10 @@ func main() {
 	//	t.Delete(10)
 	//	fmt.Print(t.MinValue(t.Root.Left.Right))
 	//	fmt.Println(t.Root)
-	nums := []int{10, 7, 25, 4, 8, 21, 32}
+	//	nums := []int{10, 7, 25, 4, 8, 21, 32}
 	//	nums := []int{10, 7, 25, 4, 8, 21, 32, 2, 6}
 	//	nums := []int{25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90}
-	t := tree.CreateBST(nums)
+	//	t := tree.CreateBST(nums)
 	//	fmt.Println(t.Root.Left)
 	//	fmt.Println(algorithms.ValidateBST(nums))
 	//	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
@@ -76,19 +74,26 @@ func main() {
 	//	t := tree.CreateBT(nums)
 	//	fmt.Println("LevelOrder", tree.LevelOrder(t.Root))
 	//	fmt.Println("min", algorithms.Min(nums))
-	fmt.Println("         bfs", tree.Bfs(t.Root))
-	fmt.Println()
-	fmt.Println("    preorder", tree.Preorder(t.Root))
-	fmt.Println("  r_preorder", tree.R_Preorder(t.Root))
-	fmt.Println()
-	fmt.Println("     inorder", tree.Inorder(t.Root))
-	fmt.Println("   r_inorder", tree.R_Inorder(t.Root))
-	fmt.Println()
-	fmt.Println("   postorder", tree.Postorder(t.Root))
-	fmt.Println(" r_postorder", tree.R_Postorder(t.Root))
-	fmt.Println()
-	fmt.Println("  levelorder", tree.Levelorder(t.Root))
-	fmt.Println("r_levelorder", tree.Levelorder(t.Root))
+	//	fmt.Println("         bfs", tree.Bfs(t.Root))
+	//	fmt.Println()
+	//	fmt.Println("    preorder", tree.Preorder(t.Root))
+	//	fmt.Println("  r_preorder", tree.R_Preorder(t.Root))
+	//	fmt.Println()
+	//	fmt.Println("     inorder", tree.Inorder(t.Root))
+	//	fmt.Println("   r_inorder", tree.R_Inorder(t.Root))
+	//	fmt.Println()
+	//	fmt.Println("   postorder", tree.Postorder(t.Root))
+	//	fmt.Println(" r_postorder", tree.R_Postorder(t.Root))
+	//	fmt.Println()
+	//	fmt.Println("  levelorder", tree.Levelorder(t.Root))
+	//	fmt.Println("r_levelorder", tree.Levelorder(t.Root))
+	//	fmt.Println()
 	// fmt.Println(tree.Height(t.Root))
+	//	fmt.Println("max path", algorithms.MaxPath(nums))
 	// fmt.Println("level order", algorithms.ListOfDepths(nums))
+	m := maze.New(9, 9)
+	// fmt.Printf("%+v\n", m.CreateGrid())
+	m.Create()
+	m.Generate()
+	m.Draw()
 }
